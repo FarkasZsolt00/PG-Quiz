@@ -1,0 +1,105 @@
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eredmenyek</title>
+</head>
+<body>
+     <div id="ertekeles">
+
+    </div>
+
+    <script>
+        let eredmeny = 0;
+        let url = window.location.search;
+        let darabok = url.split("?");
+        let valasz = darabok[1];
+
+        let valaszok = valasz.split("&")
+        let elso = valaszok[0].split("=")[1];
+        let i = 1;
+        if(elso == "2")
+        {
+            eredmeny++;
+        }
+        i++;
+        let masodik = valaszok[i].split("=")[1];
+        if(masodik == "3")
+        {
+            eredmeny++;
+        }
+        i++;
+        let harmadik = valaszok[i].split("=")[1];
+        if(harmadik == "4")
+        {
+            eredmeny++;
+        }
+        i++;
+        let eltalalt = 0;
+        while(valaszok[i].startsWith("1"))
+        {
+            if (valaszok[i].startsWith("2") || valaszok[i].startsWith("5")) 
+            {
+                eltalalt++;
+            }
+            i++;
+        }
+        i++;
+        if (eltalalt == "2") eredmeny++;
+
+        let ii = 1;
+        let talalt = 0;
+        while(valaszok[i].startsWith("1"))
+        {
+            if (valaszok[i].startsWith("1") || valaszok[i].startsWith("3") || valaszok[i].startsWith("5")) 
+            {
+                talalt++;
+            }
+            i++;
+        }
+        i++;
+        if (eltalalt == "3") eredmeny++;
+        let negyedik = valaszok[i].split("=")[1];
+        harmadik = harmadik.toLowerCase();
+        if(harmadik == "rokolya" || harmadik == "rokolya csaba")
+        {
+            erdemjegy++;
+        }
+        i++;
+        let otodik = valaszok[i].split("=")[1];
+        if (negyedik == "155")
+        {
+            erdemjegy++;
+        }
+        i++;
+        let index = 1;
+        let talaltel = 0;
+        while(valaszok[i].startsWith(1))
+        {
+            if (valaszok[i].startsWith("1") ||  valaszok[i].startsWith("5")) 
+            {
+                talaltel++;
+            }
+            i++;
+        }
+        i++;
+        if (talaltel == 2) eredmeny++;
+
+        let kilencedik = valaszok[i].split("=")[1];
+        harmadik = harmadik.toLowerCase();
+        if(harmadik == "benedek" || harmadik == "szent benedek")
+        {
+            erdemjegy++;
+        }
+        i++;
+        let tizedik = valaszok[i].split("=")[1];
+        if (negyedik == "1")
+        {
+            erdemjegy++;
+        }
+        let ertekeles = document.getElementById("ertekeles");
+        ertekeles.innerHTML = "<h1>" + eredmeny + "</h1>";
+    </script>
+    
+</body>
+</html>

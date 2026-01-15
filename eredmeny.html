@@ -2,104 +2,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Eredmenyek</title>
 </head>
 <body>
-     <div id="ertekeles">
+    <div id="ertekeles" class="a">
 
+    </div>
+    <br>
+    <div class="a">
+        <center><h1>Értékelési skála</h1></center>
+         <ul style="">
+            <li>0 - 2     Irattkozz ki a PG-ből</li>
+            <li>3 - 5     Még új vagy itt</li>
+            <li>6 - 7     Jól ismered a PG-t</li>
+            <li>8 - 10    Igazi veterán PG-s vagy</li>
+        </ul>
     </div>
 
     <script>
-        let eredmeny = 0;
-        let url = window.location.search;
-        let darabok = url.split("?");
-        let valasz = darabok[1];
+    let eredmeny = 0;
+    let url = window.location.search;
+    let darabok = url.split("?");
+    let valasz = darabok[1];
 
-        let valaszok = valasz.split("&")
-        let elso = valaszok[0].split("=")[1];
-        let i = 1;
-        if(elso == "2")
-        {
-            eredmeny++;
-        }
-        i++;
-        let masodik = valaszok[i].split("=")[1];
-        if(masodik == "3")
-        {
-            eredmeny++;
-        }
-        i++;
-        let harmadik = valaszok[i].split("=")[1];
-        if(harmadik == "4")
-        {
-            eredmeny++;
-        }
-        i++;
-        let eltalalt = 0;
-        while(valaszok[i].startsWith("1"))
-        {
-            if (valaszok[i].startsWith("2") || valaszok[i].startsWith("5")) 
-            {
-                eltalalt++;
-            }
-            i++;
-        }
-        i++;
-        if (eltalalt == "2") eredmeny++;
+    let valaszok = valasz.split("&");
 
-        let ii = 1;
-        let talalt = 0;
-        while(valaszok[i].startsWith("1"))
-        {
-            if (valaszok[i].startsWith("1") || valaszok[i].startsWith("3") || valaszok[i].startsWith("5")) 
-            {
-                talalt++;
-            }
-            i++;
-        }
-        i++;
-        if (eltalalt == "3") eredmeny++;
-        let negyedik = valaszok[i].split("=")[1];
-        harmadik = harmadik.toLowerCase();
-        if(harmadik == "rokolya" || harmadik == "rokolya csaba")
-        {
-            erdemjegy++;
-        }
-        i++;
-        let otodik = valaszok[i].split("=")[1];
-        if (negyedik == "155")
-        {
-            erdemjegy++;
-        }
-        i++;
-        let index = 1;
-        let talaltel = 0;
-        while(valaszok[i].startsWith(1))
-        {
-            if (valaszok[i].startsWith("1") ||  valaszok[i].startsWith("5")) 
-            {
-                talaltel++;
-            }
-            i++;
-        }
-        i++;
-        if (talaltel == 2) eredmeny++;
+    
+    let elso = valaszok[0].split("=")[1];
+    if (elso == "2") {
+        eredmeny++;
+    }
 
-        let kilencedik = valaszok[i].split("=")[1];
-        harmadik = harmadik.toLowerCase();
-        if(harmadik == "benedek" || harmadik == "szent benedek")
-        {
-            erdemjegy++;
+    
+    let masodik = valaszok[1].split("=")[1];
+    if (masodik == "3") {
+        eredmeny++;
+    }
+
+    
+    let harmadik = valaszok[2].split("=")[1];
+    if (harmadik == "4") {
+        eredmeny++;
+    }
+
+    
+    let i = 3;
+    let eltalalt = 0;
+    while (i <= 4) {
+        let helyes = valaszok[i].split("=")[1];
+        if (helyes == "2" || helyes == "5") {
+            eltalalt++;
         }
         i++;
-        let tizedik = valaszok[i].split("=")[1];
-        if (negyedik == "1")
-        {
-            erdemjegy++;
+    }
+    if (eltalalt == 2) {
+        eredmeny++;
+    }
+
+    
+    let ii = 5;
+    let talalt = 0;
+    while (ii <= 7) {
+        let hvalasz = valaszok[ii].split("=")[1];
+        if (hvalasz == "1" || hvalasz == "3" || hvalasz == "5") {
+            talalt++;
         }
-        let ertekeles = document.getElementById("ertekeles");
-        ertekeles.innerHTML = "<h1>" + eredmeny + "</h1>";
-    </script>
+        ii++;
+    }
+    if (talalt == 3) {
+        eredmeny++;
+    }
+
+    
+    let negyedik = valaszok[8].split("=")[1];
+    negyedik = negyedik.toLowerCase();
+    if (negyedik == "rokolya" || negyedik == "rokolya csaba") {
+        eredmeny++;
+    }
+
+    
+    let otodik = valaszok[9].split("=")[1];
+    if (otodik == "155") {
+        eredmeny++;
+    }
+
+    
+    let index = 10;
+    let talaltel = 0;
+    while (index <= 11) {
+        let h_valasz = valaszok[index].split("=")[1];
+        if (h_valasz == "1" || h_valasz == "5") {
+            talaltel++;
+        }
+        index++;
+    }
+    if (talaltel == 2) {
+        eredmeny++;
+    }
+
+    // 9.
+    let kilencedik = valaszok[12].split("=")[1];
+    kilencedik = kilencedik.toLowerCase();
+    if (kilencedik == "benedek" || kilencedik == "szent benedek") {
+        eredmeny++;
+    }
+
+    // 10.
+    let tizedik = valaszok[13].split("=")[1];
+    if (tizedik == "1") {
+        eredmeny++;
+    }
+
+    document.getElementById("ertekeles").innerHTML =
+        "<h1>" + "A helyes válaszok száma: " + eredmeny + "</h1>";
+</script>
     
 </body>
 </html>

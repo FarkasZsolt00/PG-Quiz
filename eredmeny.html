@@ -12,7 +12,7 @@
     <br>
     <div class="a">
         <center><h1>Értékelési skála</h1></center>
-         <ul style="">
+         <ul>
             <li>0 - 2     Irattkozz ki a PG-ből</li>
             <li>3 - 5     Még új vagy itt</li>
             <li>6 - 7     Jól ismered a PG-t</li>
@@ -77,7 +77,7 @@
     
     let negyedik = valaszok[8].split("=")[1];
     negyedik = negyedik.toLowerCase();
-    if (negyedik == "rokolya" || negyedik == "rokolya csaba") {
+    if (negyedik == "rokolya+csaba") {
         eredmeny++;
     }
 
@@ -101,14 +101,14 @@
         eredmeny++;
     }
 
-    // 9.
+    
     let kilencedik = valaszok[12].split("=")[1];
     kilencedik = kilencedik.toLowerCase();
-    if (kilencedik == "benedek" || kilencedik == "szent benedek") {
+    if (kilencedik == "szent+benedek") {
         eredmeny++;
     }
 
-    // 10.
+    
     let tizedik = valaszok[13].split("=")[1];
     if (tizedik == "1") {
         eredmeny++;
